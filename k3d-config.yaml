@@ -13,8 +13,9 @@ ports:
   - port: 8443:443
     nodeFilters:
       - loadbalancer
-k3s:
-  extraArgs:
-    - arg: "--disable=traefik@server"
-      nodeFilters:
-        - server: 0
+options:
+  k3s:
+    extraArgs:
+      - arg: --disable=traefik
+        nodeFilters:
+          - server:0
