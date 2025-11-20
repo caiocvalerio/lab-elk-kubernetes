@@ -1,0 +1,30 @@
+# helm show values elastic/elasticsearch > elastic-padrao.yaml
+
+# quantidade de clusters
+replicas: 3 
+
+# Quantidade de votos para eleger o master
+minimumMasterNodes: 2
+
+# especificações de memória reduzida para garantir que caiba tudo
+resources:
+  requests:
+    cpu: "100m"
+    memory: "1Gi" 
+  limits:
+    cpu: "1000m"
+    memory: "1Gi"
+
+esJavaOpts: "-Xmx512m -Xms512m" # Heap menor para testar a lógica, não a performance
+
+# Isso força o Kubernetes a tentar colocar um Pod em cada Nó diferente
+antiAffinity: "hard"
+
+# persistencia de dados
+persistence:
+  enabled: true
+  volumeClaimTemplate:
+    accessModes: [ "ReadWriteOnce" ]
+    resources:
+      requests:
+        storage: 1Gi

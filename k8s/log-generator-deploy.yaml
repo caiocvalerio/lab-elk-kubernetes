@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-generator
+spec:
+  replicas: 2 # Duaos "máquinas" gerando lgs
+  selector:
+    matchLabels:
+      app: log-generator
+  template:
+    metadata:
+      labels:
+        app: log-generator
+    spec:
+      containers:
+      - name: python
+        image: python:3.9-alpine
+        command: ["python", "/app/main.py"] # O comando chama o arquivo que será montado pelo volume
+        volumeMounts:
+        - name: script-volume
+          mountPath: /app
+      volumes:
+      - name: script-volume
+        configMap:
+          name: python-script # nome tem que ser o mesmo do comando "kubectl create configmap python-script --from-file=src/main.py"

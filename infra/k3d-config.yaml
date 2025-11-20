@@ -1,5 +1,10 @@
+# https://k3d.io/stable/usage/configfile/#all-options-example
+
+# Estrutura padrão
 apiVersion: k3d.io/v1alpha5
 kind: Simple
+
+# metadata
 metadata:
   name: srelab
 servers: 1
