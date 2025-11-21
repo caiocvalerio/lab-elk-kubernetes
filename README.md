@@ -90,7 +90,7 @@ Aguarde os containers rodarem, podendo ser verificado com o comando
 kubectl get pods
 ```
 
-### Abrir o túnel:
+### Abrir o túnel
 ```
 kubectl port-forward svc/kibana-kibana 5601:5601
 ```
