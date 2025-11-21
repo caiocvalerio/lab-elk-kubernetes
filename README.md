@@ -84,3 +84,15 @@ Realiza o deploy
 ```
 kubectl apply -f k8s/log-generator.yaml
 ```
+
+Aguarde os containers rodarem, podendo ser verificado com o comando
+```
+kubectl get pods
+```
+
+### Abrir o túnel:
+```
+kubectl port-forward svc/kibana-kibana 5601:5601
+```
+
+A aplicação fica disponível em: http://localhost:5601
