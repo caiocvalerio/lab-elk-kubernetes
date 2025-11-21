@@ -1,0 +1,32 @@
+# helm show values elastic/logstash > logastash-padrao.yaml
+
+replicas: 1 
+
+# Limites de Hardware igual o Elastic
+logstashJavaOpts: "-Xmx512m -Xms512m"
+resources:
+  requests:
+    cpu: "100m"
+    memory: "1Gi"
+  limits:
+    cpu: "1000m"
+    memory: "1.5Gi"
+
+# Configuração do Serviço para o Python
+service:
+  type: ClusterIP
+  ports:
+    - name: http-ingest
+      port: 8080
+      targetPort: 8080
+
+logstashPipeline: {}
+
+extraVolumes:
+  - name: pipeline-volume
+    configMap:
+      name: logstash-pipeline-config
+
+extraVolumeMounts:
+  - name: pipeline-volume
+    mountPath: /usr/share/logstash/pipeline

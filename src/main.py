@@ -4,7 +4,7 @@ import random
 import time
 import urllib.request
 
-ES_HOST = "http://elasticsearch-master:9200"
+ES_HOST = "http://logstash-logstash:8080"
 INDEX_NAME = "vendas-app"
 
 produtos = ["Notebook", "Mouse", "Teclado", "Monitor", "Cadeira Gamer"]
