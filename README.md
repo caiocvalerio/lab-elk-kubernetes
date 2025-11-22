@@ -5,6 +5,7 @@
 ![Logstash](https://img.shields.io/badge/-Logstash-005571?style=for-the-badge&logo=logstash)
 ![Kibana](https://img.shields.io/badge/-Kibana-005571?style=for-the-badge&logo=kibana)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
 
 Este projeto foi desenvolvido como um laboratório prático destinado ao estudo introdutório e familiarização com a Elastic Stack (ELK) e orquestração de containers via Kubernetes.
 
@@ -32,67 +33,46 @@ O dashboard foi construído com base em três pilares de observabilidade:
 
 ## Como executar
 
-### Provisionar a infraestrutura
-Cria um cluster Kubernetes leve (K3d) simulando 3 nós físicos.
+### Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas:
+ - Docker
+ - K3d
+ - Terraform
+ - Kubectl
+
+### Inicializar o Cluster
+Crie o cluster local simulando 3 nós físicos utilizando a configuração definida:
 
 ```
 k3d cluster create --config infra/k3d-config.yaml
 ```
 
-### Instalar Elasticsearch, Logstash e Kibana
-Utilizando Helm com valores customizados para laboratório.
+### Provisionamento Automatizado
+Utilizamos o Terraform para orquestrar a instalação dos Charts Helm (Elasticsearch, Logstash, Kibana) e aplicar os manifestos Kubernetes da aplicação Python.
 
 Primeiro adiciona-se o repositório oficial
 ```
-helm repo add elastic [https://helm.elastic.co](https://helm.elastic.co) && helm repo update
+cd terraform && terraform init
 ```
 
-Segue para instalar Elasticsearch 
- ```
-helm install elasticsearch elastic/elasticsearch \
-  --version 7.17.3 \
-  --values helm-values/elastic-values.yaml
+```
+terraform plan -out plan
 ```
 
-Para instalar o Logstash, primeiro criar-se o configMap
 ```
-kubectl create configmap logstash-pipeline-config --from-file=pipelines/uptime.conf
-```
-
- Após, efetua a instalação
-```
-helm install logstash elastic/logstash \
-  --version 7.17.3 \
-  --values helm-values/logstash-values.yaml
+terraform apply plan
 ```
 
-Por fim, instala-se o Kibana
-```
-helm install kibana elastic/kibana \
-  --version 7.17.3 \
-  --values helm-values/kibana-values.yaml
-```
-
-### Iniciar os geradores de carga
-
-Cria-se primeiro o config map com o script python
-```
-kubectl create configmap python-script --from-file=src/main.py
-```
-
-Realiza o deploy
-```
-kubectl apply -f k8s/log-generator.yaml
-```
-
-Aguarde os containers rodarem, podendo ser verificado com o comando
+### Validação
+Verifique se todos os pods estão com o status `Running`. O Elasticsearch pode demorar um pouco para atingir o estado de prontidão.
 ```
 kubectl get pods
 ```
 
-### Abrir o túnel
+### Acessar o Kibana
+Para acessar a interface do Kibana localmente, utilize o port-forward:
 ```
 kubectl port-forward svc/kibana-kibana 5601:5601
 ```
-
 A aplicação fica disponível em: http://localhost:5601
