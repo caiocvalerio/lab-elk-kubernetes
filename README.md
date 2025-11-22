@@ -51,7 +51,6 @@ k3d cluster create --config infra/k3d-config.yaml
 ### Provisionamento Automatizado
 Utilizamos o Terraform para orquestrar a instalação dos Charts Helm (Elasticsearch, Logstash, Kibana) e aplicar os manifestos Kubernetes da aplicação Python.
 
-Primeiro adiciona-se o repositório oficial
 ```
 cd terraform && terraform init
 ```
