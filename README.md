@@ -1,11 +1,12 @@
 # Lab: Elastic Stack com Kubernetes para Observabilidade
 
-![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
 ![ElasticSearch](https://img.shields.io/badge/-ElasticSearch-005571?style=for-the-badge&logo=elasticsearch)
 ![Logstash](https://img.shields.io/badge/-Logstash-005571?style=for-the-badge&logo=logstash)
 ![Kibana](https://img.shields.io/badge/-Kibana-005571?style=for-the-badge&logo=kibana)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
+![K3d](https://img.shields.io/badge/k3d-%23F38023.svg?style=for-the-badge&logo=k3s&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
 
 Este projeto foi desenvolvido como um laboratório prático destinado ao estudo introdutório e familiarização com a Elastic Stack (ELK) e orquestração de containers via Kubernetes.
 
