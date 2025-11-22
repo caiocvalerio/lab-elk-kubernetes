@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: log-generator
+  namespace: default
+  labels:
+    app: log-generator
 spec:
   replicas: 2 # Duaos "máquinas" gerando lgs
   selector:

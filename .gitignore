@@ -1,2 +1,7 @@
 /src/__pycache__
 .vscode/
+/terraform/.terraform/
+/terraform/*.lock.hcl
+/terraform/*.tfstate.*
+/terraform/*.tfstate
+/terraform/plan
