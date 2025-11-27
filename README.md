@@ -1,4 +1,4 @@
-# Lab: Elastic Stack com Kubernetes para Observabilidade
+# Lab: Elastic Stack com K3D para Observabilidade
 
 ![ElasticSearch](https://img.shields.io/badge/-ElasticSearch-005571?style=for-the-badge&logo=elasticsearch)
 ![Logstash](https://img.shields.io/badge/-Logstash-005571?style=for-the-badge&logo=logstash)
@@ -8,7 +8,7 @@
 ![K3d](https://img.shields.io/badge/k3d-%23F38023.svg?style=for-the-badge&logo=k3s&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
 
-Este projeto foi desenvolvido como um laboratório prático destinado ao estudo introdutório e familiarização com a Elastic Stack (ELK) e orquestração de containers via Kubernetes.
+Este projeto foi desenvolvido como um laboratório prático destinado ao estudo introdutório e familiarização com a Elastic Stack (ELK) e orquestração de containers via K3D.
 
 A iniciativa partiu da necessidade de compreender, através da implementação ativa, como os componentes da stack de observabilidade se integram arquiteturalmente.
 O foco do estudo foi estabelecer um fluxo de dados funcional, identificando os desafios de configuração, conexão entre serviços e gerenciamento de recursos em um ambiente containerizado.
